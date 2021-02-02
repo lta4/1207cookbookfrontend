@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
-// import Display from "./Display";
+import Display from "./Display";
+import Form from "./Form";
 
 function App() {
   // URL VARIABLE
@@ -13,7 +14,6 @@ function App() {
     title: "",
     yearPublished: 0
   }
-
   // STATE TO TRACK COOKBOOK TO EDIT
   const [selectedCookbook, setSelectedCookbook] = React.useState
   (emptyCookbook);
@@ -76,8 +76,30 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Cookbook List</h1>
+      <h1>Cookbook Listing</h1>
+      <Link to="/create">
       <button>Create a Cookbook</button>
+      </Link>
+      <hr />
+      <main>
+        <Switch>
+          <Route exact path="/" render={(rp) => <Display {...rp} cookbooks={cookbooks} selectCookbook={selectCookbook} deleteCookbook={deleteCookbook}/>} />
+          <Route
+            exact
+            path="/create"
+            render={(rp) => (
+              <Form {...rp} label="create" cookbook={emptyCookbook} handleSubmit={handleCreate} />
+            )}
+          />
+          <Route
+            exact
+            path="/edit"
+            render={(rp) => (
+              <Form {...rp} label="update" cookbook={selectedCookbook} handleSubmit={handleUpdate} />
+            )}
+          />
+        </Switch>
+      </main>
     </div>
   );
 }
