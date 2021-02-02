@@ -29,7 +29,7 @@ const Form = (props) => {
             value={formData.yearPublished}
             onChange={handleChange}
         />
-        <input type="submit" value={props.label} />
+        <input className="submit" type="submit" value={props.label} />
         </form>
     );
 };

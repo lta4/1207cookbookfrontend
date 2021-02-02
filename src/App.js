@@ -78,7 +78,7 @@ function App() {
     <div className="App">
       <h1>Cookbook Listing</h1>
       <Link to="/create">
-      <button>Create a Cookbook</button>
+      <button className="btn1">Create a Cookbook</button>
       </Link>
       <hr />
       <main>
